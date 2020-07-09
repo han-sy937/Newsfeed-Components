@@ -111,3 +111,64 @@ const data = [
 
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 */
+const articles = document.querySelector('.articles')
+function articleMaker(object){
+  const article = document.createElement('div')
+  const articleTitle = document.createElement('h2')
+  const articleDate = document.createElement('p')
+  const articleContentOne = document.createElement('p')
+  const articleContentTwo = document.createElement('p')
+  const articleContentThree = document.createElement('p')
+  const articleButton = document.createElement('span')
+
+  article.appendChild(articleTitle)
+  article.appendChild(articleDate)
+  article.appendChild(articleContentOne)
+  article.appendChild(articleContentTwo)
+  article.appendChild(articleContentThree)
+  article.appendChild(articleButton)
+
+  article.className = 'article'
+  articleDate.className = 'date'
+  articleButton.className = 'expandButton'
+
+  articleTitle.textContent  = object.title
+  articleDate.textContent = object.date
+  articleContentOne.textContent = object.firstParagraph
+  articleContentTwo.textContent = object.secondParagraph
+  articleContentThree.textContent = object.thirdParagraph
+
+  // Step 2: Add an event listener to the expandButton span. This listener should toggle the class 'article-open' on the 'article' div.
+
+  article.addEventListener('click', () => {
+    article.classList.toggle('article-open')
+  })
+
+
+  return article
+}
+
+
+data.push({
+  title: 'Why Lambda School is changing the conventional way of learning',
+
+  date: 'July 8th, 2020',
+
+  firstParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+
+  secondParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`,
+
+  thirdParagraph: `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.`
+})
+
+
+data.forEach(object => {
+  const theArticle = articleMaker(object)
+  articles.appendChild(theArticle)
+})
+
+
+
+  
+// console.log(data)
+
